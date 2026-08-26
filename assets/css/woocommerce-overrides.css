@@ -13,7 +13,8 @@ markup can't be verified without a live site.
 .woocommerce ul.products,
 .woocommerce-page ul.products {
 	display: grid !important;
-	grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)) !important;
+	grid-template-columns: repeat(auto-fill, minmax(240px, 340px)) !important;
+	justify-content: start;
 	gap: var(--gutter);
 	list-style: none;
 	margin: 0 0 var(--space-8);
@@ -24,12 +25,11 @@ markup can't be verified without a live site.
 	margin: 0 !important;
 	width: auto !important;
 	float: none !important;
-	max-width: 340px;
 }
 @media (max-width: 900px) {
 	.woocommerce ul.products,
 	.woocommerce-page ul.products {
-		grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)) !important;
+		grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)) !important;
 		gap: 14px;
 	}
 }
