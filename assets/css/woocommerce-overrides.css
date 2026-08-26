@@ -10,29 +10,33 @@ markup can't be verified without a live site.
 */
 
 /* Shop loop grid — content-product.php supplies the .cs-product-card markup */
-.woocommerce ul.products {
-	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+.woocommerce ul.products,
+.woocommerce-page ul.products {
+	display: grid !important;
+	grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)) !important;
 	gap: var(--gutter);
 	list-style: none;
 	margin: 0 0 var(--space-8);
 	padding: 0;
 }
-.woocommerce ul.products li.product {
-	margin: 0;
-	width: auto;
-	float: none;
+.woocommerce ul.products li.product,
+.woocommerce-page ul.products li.product {
+	margin: 0 !important;
+	width: auto !important;
+	float: none !important;
 	max-width: 340px;
 }
 @media (max-width: 900px) {
-	.woocommerce ul.products {
-		grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+	.woocommerce ul.products,
+	.woocommerce-page ul.products {
+		grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)) !important;
 		gap: 14px;
 	}
 }
 @media (max-width: 560px) {
-	.woocommerce ul.products {
-		grid-template-columns: minmax(0, 1fr);
+	.woocommerce ul.products,
+	.woocommerce-page ul.products {
+		grid-template-columns: minmax(0, 1fr) !important;
 	}
 }
 
