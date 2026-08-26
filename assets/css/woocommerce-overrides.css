@@ -1,0 +1,95 @@
+/*
+Reskin WooCommerce's own default markup and Storefront's default markup
+to the Cycle Sport 4.0 design system, in cases where a CSS-only pass is
+enough (no PHP template override needed).
+
+This is a starting point ported from the mockup's token values — the
+exact Storefront class names here should be checked visually once the
+theme is running against a real WooCommerce install, since Storefront's
+markup can't be verified without a live site.
+*/
+
+/* Shop loop grid — content-product.php supplies the .cs-product-card markup */
+.woocommerce ul.products {
+	display: grid;
+	grid-template-columns: repeat(4, minmax(0, 1fr));
+	gap: var(--gutter);
+	list-style: none;
+	margin: 0 0 var(--space-8);
+	padding: 0;
+}
+.woocommerce ul.products li.product {
+	margin: 0;
+	width: auto;
+	float: none;
+}
+@media (max-width: 900px) {
+	.woocommerce ul.products {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 14px;
+	}
+}
+@media (max-width: 560px) {
+	.woocommerce ul.products {
+		grid-template-columns: minmax(0, 1fr);
+	}
+}
+
+/* WooCommerce's native price markup, inside our .cs-product-card__price wrapper */
+.cs-product-card__price .price {
+	display: flex;
+	gap: 8px;
+	align-items: baseline;
+	font-family: var(--font-body);
+	font-weight: var(--weight-bold);
+	color: var(--text-primary);
+}
+.cs-product-card__price .price ins {
+	text-decoration: none;
+	color: var(--accent-primary);
+	order: 1;
+}
+.cs-product-card__price .price del {
+	color: var(--text-muted);
+	font-size: 12px;
+	font-weight: var(--weight-regular);
+	order: 2;
+}
+
+.cs-product-card__cta {
+	padding: 0 14px 14px;
+}
+.cs-product-card__cta .button,
+.cs-product-card__cta .added_to_cart {
+	width: 100%;
+}
+
+/* Storefront header/footer reskin */
+.site-header {
+	background: var(--ink-950);
+}
+.site-header .site-branding a,
+.site-header .site-title a,
+.site-header .site-description {
+	color: var(--white);
+}
+.site-header .main-navigation a {
+	color: var(--white);
+	font-family: var(--font-body);
+	font-weight: 600;
+}
+.site-header .main-navigation a:hover,
+.site-header .main-navigation .current-menu-item > a {
+	color: var(--accent-primary);
+}
+.site-header .site-header-cart a {
+	color: var(--white);
+}
+
+.site-footer {
+	background: var(--ink-950);
+	color: var(--ink-300);
+}
+.site-footer a {
+	color: inherit;
+}

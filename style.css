@@ -1,0 +1,14 @@
+/*
+Theme Name: Cycle Sport 4.0
+Theme URI: https://cyclesport40.it
+Description: Custom WooCommerce storefront for Cycle Sport 4.0, built as a Storefront child theme. Design system ported from the Cloudflare mockup.
+Author: Cycle Sport 4.0
+Template: storefront
+Version: 1.0.0
+Text Domain: cyclesport-child
+*/
+
+@import url('assets/css/tokens/colors.css');
+@import url('assets/css/tokens/typography.css');
+@import url('assets/css/tokens/spacing.css');
+@import url('assets/css/tokens/effects.css');

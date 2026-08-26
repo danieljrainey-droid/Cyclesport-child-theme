@@ -1,0 +1,258 @@
+/*
+Cycle Sport 4.0 design system, ported from the Cloudflare mockup's React
+component bundle (_ds_bundle.js) into plain CSS classes so PHP templates
+(theme + WooCommerce overrides) can use the same visual language without
+React/Babel in the browser.
+*/
+
+/* Buttons — components/forms/Button.jsx */
+.cs-btn {
+  font-family: var(--font-body);
+  font-weight: var(--weight-semibold);
+  font-size: var(--text-body-sm);
+  border: var(--border-width) solid transparent;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  text-decoration: none;
+  transition: background var(--duration-fast) var(--ease-standard),
+    color var(--duration-fast) var(--ease-standard),
+    border-color var(--duration-fast) var(--ease-standard);
+  padding: 12px 20px;
+}
+.cs-btn--sm { padding: 8px 14px; font-size: var(--text-caption); }
+.cs-btn--lg { padding: 15px 28px; font-size: var(--text-body); }
+.cs-btn--primary { background: var(--accent-primary); color: var(--text-on-red); border-color: var(--accent-primary); }
+.cs-btn--primary:hover { background: var(--accent-primary-hover); border-color: var(--accent-primary-hover); }
+.cs-btn--dark { background: var(--ink-950); color: var(--white); border-color: var(--ink-950); }
+.cs-btn--outline { background: transparent; color: var(--ink-950); border-color: var(--ink-950); }
+.cs-btn--ghost { background: transparent; color: var(--ink-950); border-color: transparent; }
+.cs-btn--usato { background: var(--accent-usato); color: var(--white); border-color: var(--accent-usato); }
+.cs-btn--usato:hover { background: var(--accent-usato-hover); border-color: var(--accent-usato-hover); }
+.cs-btn:disabled,
+.cs-btn.disabled { opacity: .45; cursor: not-allowed; }
+
+/* Badge — components/feedback/Badge.jsx */
+.cs-badge {
+  font-family: var(--font-display);
+  letter-spacing: .03em;
+  font-size: 13px;
+  padding: 4px 10px;
+  border-radius: var(--radius-sm);
+  display: inline-block;
+  line-height: 1;
+}
+.cs-badge--sale { background: var(--accent-primary); color: var(--white); }
+.cs-badge--new { background: var(--ink-950); color: var(--white); }
+.cs-badge--usato { background: var(--accent-usato); color: var(--white); }
+.cs-badge--outline { background: transparent; color: var(--ink-950); border: 1px solid var(--ink-950); }
+
+/* Tag — components/feedback/Tag.jsx */
+.cs-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-body);
+  font-size: var(--text-caption);
+  font-weight: var(--weight-medium);
+  color: var(--text-primary);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-pill);
+  padding: 6px 12px;
+  background: var(--white);
+}
+.cs-tag__remove { cursor: pointer; color: var(--text-muted); }
+
+/* PriceTag — components/commerce/PriceTag.jsx */
+.cs-price-tag {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  font-family: var(--font-body);
+}
+.cs-price-tag__current {
+  font-size: var(--text-h4);
+  font-weight: var(--weight-bold);
+  color: var(--text-primary);
+}
+.cs-price-tag--sale .cs-price-tag__current { color: var(--accent-primary); }
+.cs-price-tag__original {
+  font-size: var(--text-body-sm);
+  color: var(--text-muted);
+  text-decoration: line-through;
+}
+
+/* ProductCard — components/commerce/ProductCard.jsx */
+.cs-product-card {
+  width: 100%;
+  font-family: var(--font-body);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: var(--white);
+  transition: box-shadow var(--duration-base) var(--ease-standard);
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+.cs-product-card:hover { box-shadow: var(--shadow-md); }
+.cs-product-card__media {
+  position: relative;
+  aspect-ratio: 4/3;
+  background: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  font-size: 11px;
+  overflow: hidden;
+}
+.cs-product-card__media img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
+.cs-product-card__media--contain img { object-fit: contain; }
+.cs-product-card__badge { position: absolute; top: 10px; left: 10px; }
+.cs-product-card__body { padding: 14px; display: flex; flex-direction: column; gap: 4px; }
+.cs-product-card__brand {
+  font-size: var(--text-caption);
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-overline);
+}
+.cs-product-card__name { font-size: var(--text-body-sm); font-weight: var(--weight-semibold); color: var(--text-primary); }
+.cs-product-card__price {
+  font-family: var(--font-body);
+  font-weight: var(--weight-bold);
+  color: var(--text-primary);
+  display: flex;
+  gap: 8px;
+  align-items: baseline;
+}
+.cs-product-card--sale .cs-product-card__price { color: var(--accent-primary); }
+.cs-product-card__price-original { font-size: 12px; color: var(--text-muted); text-decoration: line-through; font-weight: var(--weight-regular); }
+
+/* VariantSwatch — components/commerce/VariantSwatch.jsx */
+.cs-variant-swatch { display: flex; gap: 8px; flex-wrap: wrap; list-style: none; margin: 0; padding: 0; }
+.cs-variant-swatch__item {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: none;
+}
+.cs-variant-swatch__item--size {
+  min-width: 40px;
+  height: 40px;
+  padding: 0 10px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--border-default);
+  color: var(--text-primary);
+  font-weight: var(--weight-regular);
+}
+.cs-variant-swatch__item--size.is-selected { border: 2px solid var(--ink-950); font-weight: var(--weight-bold); }
+.cs-variant-swatch__item--color {
+  width: 28px;
+  height: 28px;
+  border-radius: var(--radius-circle);
+  border: 1px solid var(--border-default);
+}
+.cs-variant-swatch__item--color.is-selected { border: 2px solid var(--ink-950); box-shadow: 0 0 0 2px var(--white) inset; }
+
+/* Form controls — components/forms/{Input,Select,Checkbox,Radio}.jsx */
+.cs-field { display: flex; flex-direction: column; gap: 6px; font-family: var(--font-body); width: 100%; max-width: 320px; }
+.cs-field__label { font-size: var(--text-caption); font-weight: var(--weight-semibold); color: var(--text-secondary); }
+.cs-field__control,
+.cs-input,
+.cs-select {
+  font-family: var(--font-body);
+  font-size: var(--text-body-sm);
+  padding: 11px 14px;
+  border: var(--border-width) solid var(--border-default);
+  border-radius: var(--radius-md);
+  outline: none;
+  color: var(--text-primary);
+  background: var(--white);
+  width: 100%;
+}
+.cs-field--error .cs-field__control { border-color: var(--accent-primary); }
+.cs-field__error { font-size: var(--text-caption); color: var(--accent-primary); }
+.cs-checkbox, .cs-radio {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-body);
+  font-size: var(--text-body-sm);
+  color: var(--text-primary);
+  cursor: pointer;
+}
+.cs-checkbox input, .cs-radio input { width: 18px; height: 18px; accent-color: var(--accent-primary); }
+
+/* Accordion — components/navigation/Accordion.jsx */
+.cs-accordion { font-family: var(--font-body); border-top: 1px solid var(--border-default); }
+.cs-accordion__item { border-bottom: 1px solid var(--border-default); }
+.cs-accordion__trigger {
+  padding: 14px 4px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  font-weight: var(--weight-semibold);
+  font-size: var(--text-body-sm);
+  color: var(--text-primary);
+  background: none;
+  border: none;
+  width: 100%;
+  text-align: left;
+}
+.cs-accordion__panel { padding: 0 4px 14px; font-size: var(--text-body-sm); color: var(--text-secondary); }
+.cs-accordion__item:not(.is-open) .cs-accordion__panel { display: none; }
+
+/* Breadcrumb — components/navigation/Breadcrumb.jsx */
+.cs-breadcrumb {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  font-family: var(--font-body);
+  font-size: var(--text-caption);
+  color: var(--text-muted);
+  flex-wrap: wrap;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.cs-breadcrumb__sep { color: var(--text-muted); }
+.cs-breadcrumb__item a { color: var(--text-muted); text-decoration: none; }
+.cs-breadcrumb__item:last-child { color: var(--text-primary); font-weight: var(--weight-semibold); }
+
+/* Tabs — components/navigation/Tabs.jsx */
+.cs-tabs__list { display: flex; gap: 24px; border-bottom: 1px solid var(--border-default); list-style: none; margin: 0; padding: 0; }
+.cs-tabs__tab {
+  padding: 12px 2px;
+  cursor: pointer;
+  font-size: var(--text-body-sm);
+  font-weight: var(--weight-semibold);
+  color: var(--text-muted);
+  border: none;
+  background: none;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+}
+.cs-tabs__tab.is-active { color: var(--text-primary); border-bottom-color: var(--accent-primary); }
+.cs-tabs__panel { padding: 16px 0; font-size: var(--text-body-sm); color: var(--text-secondary); }
+.cs-tabs__panel:not(.is-active) { display: none; }
+
+/* CategoryRail — ui_kits/ecommerce/CategoryRail.jsx */
+.cs-category-rail { display: flex; flex-direction: column; gap: 2px; width: 220px; font-family: var(--font-body); font-size: 14px; list-style: none; margin: 0; padding: 0; }
+.cs-category-rail__item a {
+  display: block;
+  padding: 10px 12px;
+  border-radius: var(--radius-sm);
+  font-weight: var(--weight-medium);
+  color: var(--text-primary);
+  text-decoration: none;
+}
+.cs-category-rail__item.is-active a { font-weight: var(--weight-bold); background: var(--red-50); color: var(--accent-primary); }
