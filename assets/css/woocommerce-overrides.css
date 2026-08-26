@@ -43,7 +43,8 @@ markup can't be verified without a live site.
 /* WooCommerce's native price markup, inside our .cs-product-card__price wrapper */
 .cs-product-card__price .price {
 	display: flex;
-	gap: 8px;
+	flex-wrap: wrap;
+	gap: 4px 8px;
 	align-items: baseline;
 	font-family: var(--font-body);
 	font-weight: var(--weight-bold);
