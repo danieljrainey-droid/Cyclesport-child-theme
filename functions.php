@@ -42,3 +42,49 @@ function cyclesport_add_to_cart_button_class( $args ) {
 	return $args;
 }
 add_filter( 'woocommerce_loop_add_to_cart_args', 'cyclesport_add_to_cart_button_class' );
+
+/**
+ * Favicon, built from the Cycle Sport chain-ring logo mark.
+ *
+ * Falls back to these theme assets only when no Site Icon has been set
+ * in the customizer, so an editor's own choice there still wins.
+ */
+function cyclesport_favicon_url( $size ) {
+	return get_stylesheet_directory_uri() . '/assets/images/favicon-' . $size . 'x' . $size . '.png';
+}
+
+function cyclesport_site_icon_url( $url, $size, $blog_id ) {
+	if ( $url || has_site_icon( $blog_id ) ) {
+		return $url;
+	}
+
+	$available = array( 16, 32, 48, 192, 512 );
+	$closest   = $available[0];
+	foreach ( $available as $candidate ) {
+		if ( $candidate >= $size ) {
+			$closest = $candidate;
+			break;
+		}
+		$closest = $candidate;
+	}
+
+	return cyclesport_favicon_url( $closest );
+}
+add_filter( 'get_site_icon_url', 'cyclesport_site_icon_url', 10, 3 );
+
+function cyclesport_favicon_markup() {
+	if ( has_site_icon() ) {
+		return;
+	}
+
+	$theme_uri = get_stylesheet_directory_uri();
+	?>
+	<link rel="icon" href="<?php echo esc_url( cyclesport_favicon_url( 32 ) ); ?>" sizes="32x32">
+	<link rel="icon" href="<?php echo esc_url( cyclesport_favicon_url( 192 ) ); ?>" sizes="192x192">
+	<link rel="apple-touch-icon" href="<?php echo esc_url( $theme_uri . '/assets/images/apple-touch-icon.png' ); ?>">
+	<link rel="shortcut icon" href="<?php echo esc_url( $theme_uri . '/assets/images/favicon.ico' ); ?>">
+	<?php
+}
+add_action( 'wp_head', 'cyclesport_favicon_markup', 1 );
+add_action( 'admin_head', 'cyclesport_favicon_markup', 1 );
+add_action( 'login_head', 'cyclesport_favicon_markup', 1 );
